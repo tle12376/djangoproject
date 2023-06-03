@@ -1,9 +1,10 @@
 {# mysite/templates/base.html #}
-
+{% load static %}
 <!DOCTYPE html>
 <html>
   <head>
-    <title>My Django Blog</title>
+    <title>My Django Blog</title> <!-- This is already present -->
+    <link type="text/css" rel="stylesheet" href="{% static 'django_blog.css' %}">
   </head>
   <body>
     <div id="container">
