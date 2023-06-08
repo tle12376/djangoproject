@@ -2,6 +2,7 @@ from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.template import loader
 from blogging.models import Post
 from django.shortcuts import render
+from django.views.generic.list import ListView
 
 def stub_view(request, *args, **kwargs):
     body = "Stub View\n\n"
@@ -15,11 +16,15 @@ def stub_view(request, *args, **kwargs):
 
 
 # and this view
-def list_view(request):
-    published = Post.objects.exclude(published_date__exact=None)
-    posts = published.order_by('-published_date')
-    context = {'posts': posts}
-    return render(request, 'blogging/list.html', context)
+# def list_view(request):
+#     published = Post.objects.exclude(published_date__exact=None)
+#     posts = published.order_by('-published_date')
+#     context = {'posts': posts}
+#     return render(request, 'templates/list.html', context)
+
+class BlogListView(ListView):
+    model = Post
+    template_name = 'blogging/list.html'
 
 
 def detail_view(request, post_id):

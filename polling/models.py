@@ -1,4 +1,4 @@
-# polling/models.py
+# templates/models.py
 from django.db import models
 
 
