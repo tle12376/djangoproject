@@ -1,5 +1,6 @@
 # templates/admin.py
 from django.contrib import admin
+
 # a new import
 from blogging.models import Post, Category  # <-- import Category
 
