@@ -4,6 +4,7 @@ from blogging.models import Post
 from django.shortcuts import render
 from django.views.generic.list import ListView
 
+
 def stub_view(request, *args, **kwargs):
     body = "Stub View\n\n"
     if args:
@@ -22,9 +23,10 @@ def stub_view(request, *args, **kwargs):
 #     context = {'posts': posts}
 #     return render(request, 'templates/list.html', context)
 
+
 class BlogListView(ListView):
     model = Post
-    template_name = 'blogging/list.html'
+    template_name = "blogging/list.html"
 
 
 def detail_view(request, post_id):
@@ -33,5 +35,5 @@ def detail_view(request, post_id):
         post = published.get(pk=post_id)
     except Post.DoesNotExist:
         raise Http404
-    context = {'post': post}
-    return render(request, 'blogging/detail.html', context)
+    context = {"post": post}
+    return render(request, "blogging/detail.html", context)
